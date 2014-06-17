@@ -1,7 +1,7 @@
 {
-  "name": "project",
+  "name": "Base",
   "version": "0.1.0",
-  "author": "RIESTER <mjones@riester.com>",
+  "author": "Mattbob <matt@greenishorange.com>",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-jshint": "~0.6.4",
