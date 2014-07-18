@@ -1,7 +1,8 @@
 {
   "name": "Base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Mattbob <matt@greenishorange.com>",
+  "private": true,
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-jshint": "~0.6.4",
