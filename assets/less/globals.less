@@ -4,7 +4,7 @@
 
 - VARIABLES
 - GLOBAL STYLES
-- GRID
+- RESPONSIVE
 
 ///////////////////////////////////// */
 
@@ -19,7 +19,7 @@
 // GLOBAL STYLES
 ///////////////////////////////////// */
 
-*{
+*, *:before, *:after {
 -webkit-box-sizing:border-box;
    -moz-box-sizing:border-box;
         box-sizing:border-box;
@@ -33,24 +33,14 @@ a{
 
 }
 
-.container{
-margin:0 auto;
+nav ul{
+list-style:none;
+.spacing(0, 0);
 }
 
 
 /* /////////////////////////////////////
-// GRID
+// RESPONSIVE
 ///////////////////////////////////// */
 
-.clear{
-*zoom:1;
-	&:before, &:after{
-	content:" ";
-	display:table;
-	}
-	&:after{
-	clear:both;
-	}
-}
-
-// @import 'grid.less';
+@import 'responsive.less';

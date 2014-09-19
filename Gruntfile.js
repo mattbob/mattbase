@@ -30,11 +30,9 @@ module.exports = function(grunt) {
 				},
 				options: {
 					compress: true,
-					cleancss: true,
-					// report: 'min',
-
+					report: 'gzip',
 					// LESS source map
-					// To enable, set sourceMap to true and update sourceMapRootpath based on your install
+					// To enable, update sourceMapRootpath based on your install
 					sourceMap: true,
 					sourceMapFilename: 'assets/css/style.min.css.map',
 					sourceMapRootpath: '/'
@@ -47,7 +45,10 @@ module.exports = function(grunt) {
 				files: [
 					'assets/less/*.less'
 				],
-				tasks: ['less']
+				tasks: ['less'],
+				options: {
+					spawn: false
+				}
 			},
 			js: {
 				files: [
