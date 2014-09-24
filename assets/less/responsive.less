@@ -16,6 +16,7 @@
 
 @columns: 12;
 @gutter-width: 15px;
+@include-gutters: true;
 
 @width-mobile:  320px;
 @width-tablet:  660px;
@@ -48,27 +49,27 @@
     .clear;
 }
 
-.col(@span, @device: mobile, @gutter: true) when (@gutter = true) {
+.col(@span, @device: mobile, @gutter: @include-gutters) when (@gutter = true) {
     padding-right:@gutter-width;
     padding-left:@gutter-width;
 }
 
-.col(@span, @device: mobile, @gutter: true) {
+.col(@span, @device: mobile, @gutter: @include-gutters) {
     .border-box;
     float: left;
 }
 
-.col(@span, @device: mobile, @gutter: true) when (@device = mobile) {
+.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = mobile) {
     width: (100% * @span / @columns);
 }
 
-.col(@span, @device: mobile, @gutter: true) when (@device = tablet) {
+.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = tablet) {
     @media screen and (min-width: @width-tablet) {
         width: (100% * @span / @columns);
     }
 }
 
-.col(@span, @device: mobile, @gutter: true) when (@device = desktop) {
+.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = desktop) {
     @media screen and (min-width: @width-desktop) {
         width: (100% * @span / @columns);
     }
