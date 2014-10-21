@@ -1,3 +1,19 @@
+/* /////////////////////////////////////
+// TABLE OF CONTENTS
+////////////////////////////////////////
+
+- LAYOUT MIXINS
+- TEXT MIXINS
+- SHADOW MIXINS
+- ANIMATION MIXINS
+
+///////////////////////////////////// */
+
+
+/* /////////////////////////////////////
+// LAYOUT MIXINS
+///////////////////////////////////// */
+
 .clear{
 	*zoom: 1;
 
@@ -11,6 +27,12 @@
 	}
 }
 
+.border-box() {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
 .size(@width, @height: auto) {
 	width: @width;
 	height: @height;
@@ -21,7 +43,6 @@
 	padding: @padding;
 }
 
-// POSITION
 .position(@pos: relative, @coordinates: auto, @z: 1) {
 	position: @pos;
 	z-index: @z;
@@ -39,11 +60,21 @@
 	.position-loop( length(@coordinates) );
 }
 
-.border-box() {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
+
+/* /////////////////////////////////////
+// TEXT MIXINS
+///////////////////////////////////// */
+
+.hide-text() {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
 }
+
+
+/* /////////////////////////////////////
+// SHADOW MIXINS
+///////////////////////////////////// */
 
 .box-shadow(@shadow) {
 	-webkit-box-shadow: @shadow;
@@ -57,15 +88,14 @@
 	        box-shadow: inset @shadow;
 }
 
+
+/* /////////////////////////////////////
+// ANIMATION MIXINS
+///////////////////////////////////// */
+
 .transition(@transition: all 0.25s ease) {
 	-webkit-transition: @transition;
 	   -moz-transition: @transition;
 	     -o-transition: @transition;
 	        transition: @transition;
-}
-
-.hide-text() {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
 }
