@@ -41,6 +41,13 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
+			options: {
+			    dateFormat: function(time) {
+			        grunt.log.writeln('Finished in ' + time + 'ms');
+			        grunt.log.writeln('Waiting...');
+			        grunt.log.writeln('');
+			    }
+			},
 			less: {
 				files: [
 					'assets/less/*.less'

@@ -15,7 +15,7 @@
 ///////////////////////////////////// */
 
 @columns: 12;
-@gutter-width: 15px;
+@gutter-width: 20px;
 @include-gutters: true;
 
 @width-mobile:  320px;
@@ -28,16 +28,16 @@
 ///////////////////////////////////// */
 
 .container {
-    margin: 0 auto;
-    width: @width-mobile;
+	margin: 0 auto;
+	width: @width-mobile;
 
-    @media screen and (min-width: @width-tablet) {
-        width: @width-tablet;
-    }
+	@media screen and (min-width: @width-tablet) {
+		width: @width-tablet;
+	}
 
-    @media screen and (min-width: @width-desktop) {
-        width: @width-desktop;
-    }
+	@media screen and (min-width: @width-desktop) {
+		width: @width-desktop;
+	}
 }
 
 
@@ -46,50 +46,72 @@
 ///////////////////////////////////// */
 
 .row() {
-    .clear;
-}
-
-.col(@span, @device: mobile, @gutter: @include-gutters) when (@gutter = true) {
-    padding-right:@gutter-width;
-    padding-left:@gutter-width;
-}
-
-.col(@span, @device: mobile, @gutter: @include-gutters) {
-    .border-box;
-    float: left;
-}
-
-.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = mobile) {
-    width: (100% * @span / @columns);
-}
-
-.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = tablet) {
-    @media screen and (min-width: @width-tablet) {
-        width: (100% * @span / @columns);
-    }
-}
-
-.col(@span, @device: mobile, @gutter: @include-gutters) when (@device = desktop) {
-    @media screen and (min-width: @width-desktop) {
-        width: (100% * @span / @columns);
-    }
+	.clear;
 }
 
 
-.push(@span, @device: mobile) when (@device = mobile) {
-    margin-left: (100% * @span / @columns);
+// DEFAULT COLUMN PROPERTIES
+.col(@span, @gutter: @include-gutters, @device: mobile) {
+	float: left;
+	display: block;
+	.border-box;
 }
 
-.push(@span, @device: mobile) when (@device = tablet) {
-    @media screen and (min-width: @width-tablet) {
-        margin-left: (100% * @span / @columns);
-    }
+// FUNCTION TO GET COLUMN WIDTH
+.col-width(@span, @gutter) when not (@span = @columns) and (@gutter = true) {
+	@total-columns: @columns / @span;
+	@total-gutters: @total-columns - 1;
+	@total-gutters-width: @total-gutters * @gutter-width;
+
+	width: -webkit-calc(~"(100% - "@total-gutters-width~") / "@total-columns);
+	width: calc(~"(100% - "@total-gutters-width~") / "@total-columns);
+	margin-right: @gutter-width;
 }
 
-.push(@span, @device: mobile) when (@device = desktop) {
-    @media screen and (min-width: @width-desktop) {
-        margin-left: (100% * @span / @columns);
-    }
+.col-width(@span, @gutter) when not (@span = @columns) and (@gutter = false) {
+	width: (100% * @span / @columns);
+}
+
+.col-width(@span, @gutter) when (@span = @columns) {
+	width: 100%;
+}
+
+// SET COLUMN WIDTH
+.col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile) {
+	.col-width(@span, @gutter);
+	&:last-child { margin-right: 0; }
+}
+
+.col(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) {
+	@media screen and (min-width: @width-tablet) {
+		.col-width(@span, @gutter);
+		&:last-child { margin-right: 0; }
+	}
+}
+
+.col(@span, @gutter: @include-gutters, @device: mobile) when (@device = desktop) {
+	@media screen and (min-width: @width-desktop) {
+		.col-width(@span, @gutter);
+		&:last-child { margin-right: 0; }
+	}
+}
+
+
+// COLUMN OFFSET
+.offset(@span, @device: mobile) when (@device = mobile) {
+	margin-left: (100% * @span / @columns);
+}
+
+.offset(@span, @device: mobile) when (@device = tablet) {
+	@media screen and (min-width: @width-tablet) {
+		margin-left: (100% * @span / @columns);
+	}
+}
+
+.offset(@span, @device: mobile) when (@device = desktop) {
+	@media screen and (min-width: @width-desktop) {
+		margin-left: (100% * @span / @columns);
+	}
 }
 
 
@@ -97,24 +119,28 @@
 // DISPLAY MIXINS
 ///////////////////////////////////// */
 
+// HIDE ALL
 .hide(@device: all) when (@device = all) {
-    display: none;
+	display: none;
 }
 
+// HIDE ONLY MOBILE
 .hide(@device: all) when (@device = mobile) {
-    @media screen and (max-width: @width-tablet) {
-        display: none;
-    }
+	@media screen and (max-width: @width-tablet) {
+		display: none;
+	}
 }
 
+// HIDE ONLY TABLET
 .hide(@device: all) when (@device = tablet) {
-    @media screen and (min-width: @width-tablet) and (max-width: @width-desktop) {
-        display: none;
-    }
+	@media screen and (min-width: @width-tablet) and (max-width: @width-desktop) {
+		display: none;
+	}
 }
 
+// HIDE ONLY DESKTOP
 .hide(@device: all) when (@device = desktop) {
-    @media screen and (min-width: @width-desktop) {
-        display: none;
-    }
+	@media screen and (min-width: @width-desktop) {
+		display: none;
+	}
 }
