@@ -14,15 +14,15 @@
 // LAYOUT MIXINS
 ///////////////////////////////////// */
 
-.clear{
+.clear {
 	*zoom: 1;
 
-	&:before, &:after{
+	&:before, &:after {
 		content: " ";
 		display: table;
 	}
 
-	&:after{
+	&:after {
 		clear: both;
 	}
 }
@@ -57,13 +57,18 @@
 	}
 	.position-loop(0) {}
 
-	.position-loop( length(@coordinates) );
+	.position-loop(length(@coordinates));
 }
 
 
 /* /////////////////////////////////////
 // TEXT MIXINS
 ///////////////////////////////////// */
+
+.navigation() {
+	.spacing(0, 0);
+	list-style:none;
+}
 
 .hide-text() {
 	text-indent: 100%;
