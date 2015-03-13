@@ -15,12 +15,13 @@
 ///////////////////////////////////// */
 
 @columns:          12;
-@gutter-width:     20px;
-@include-gutters:  true;
+@gutter-width:     30px;
+@include-gutters:  false;
 
 @width-mobile:     320px;
-@width-tablet:     660px;
-@width-desktop:    960px;
+@width-mobile-l:   500px;
+@width-tablet:     700px;
+@width-desktop:    970px;
 
 
 /* /////////////////////////////////////
@@ -30,6 +31,10 @@
 .container {
 	margin: 0 auto;
 	width: @width-mobile;
+
+	@media screen and (min-width: @width-mobile-l) {
+		width: @width-mobile-l;
+	}
 
 	@media screen and (min-width: @width-tablet) {
 		width: @width-tablet;
@@ -71,6 +76,22 @@
 	padding-right: 0;
 }
 
+.col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) and (@gutter = true) {
+	@media screen and (min-width: @width-mobile-l) {
+		width: (100% * @span / @columns);
+		padding-left: @gutter-width / 2;
+		padding-right: @gutter-width / 2;
+	}
+}
+
+.col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) and (@gutter = false) {
+	@media screen and (min-width: @width-mobile-l) {
+		width: (100% * @span / @columns);
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) and (@gutter = true) {
 	@media screen and (min-width: @width-tablet) {
 		width: (100% * @span / @columns);
@@ -109,6 +130,12 @@
     margin-left: (100% * @span / @columns);
 }
 
+.offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) {
+    @media screen and (min-width: @width-mobile-l) {
+        margin-left: (100% * @span / @columns);
+    }
+}
+
 .offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) {
     @media screen and (min-width: @width-tablet) {
         margin-left: (100% * @span / @columns);
@@ -133,7 +160,14 @@
 
 // HIDE ONLY MOBILE
 .hide(@device: all) when (@device = mobile) {
-	@media screen and (max-width: @width-tablet) {
+	@media screen and (max-width: @width-mobile-l) {
+		display: none;
+	}
+}
+
+// HIDE ONLY MOBILE LANDSCAPE
+.hide(@device: all) when (@device = mobile-l) {
+	@media screen and (min-width: @width-mobile-l) and (max-width: @width-tablet) {
 		display: none;
 	}
 }
@@ -150,4 +184,17 @@
 	@media screen and (min-width: @width-desktop) {
 		display: none;
 	}
+}
+
+.hide-mobile {
+	.hide(mobile);
+	.hide(mobile-l);
+}
+
+.hide-tablet {
+	.hide(tablet);
+}
+
+.hide-desktop {
+	.hide(desktop);
 }

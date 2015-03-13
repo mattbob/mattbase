@@ -27,12 +27,6 @@
 	}
 }
 
-.border-box() {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
-}
-
 .size(@width, @height: auto) {
 	width: @width;
 	height: @height;
@@ -62,45 +56,16 @@
 
 
 /* /////////////////////////////////////
-// TEXT MIXINS
+// TEXT HELPERS
 ///////////////////////////////////// */
 
-.navigation() {
+.navigation {
 	.spacing(0, 0);
 	list-style:none;
 }
 
-.hide-text() {
+.hide-text {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-}
-
-
-/* /////////////////////////////////////
-// SHADOW MIXINS
-///////////////////////////////////// */
-
-.box-shadow(@shadow) {
-	-webkit-box-shadow: @shadow;
-	   -moz-box-shadow: @shadow;
-	        box-shadow: @shadow;
-}
-
-.inner-shadow(@shadow) {
-	-webkit-box-shadow: inset @shadow;
-	   -moz-box-shadow: inset @shadow;
-	        box-shadow: inset @shadow;
-}
-
-
-/* /////////////////////////////////////
-// ANIMATION MIXINS
-///////////////////////////////////// */
-
-.transition(@transition: all 0.25s ease) {
-	-webkit-transition: @transition;
-	   -moz-transition: @transition;
-	     -o-transition: @transition;
-	        transition: @transition;
 }
