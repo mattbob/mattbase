@@ -8,8 +8,7 @@ module.exports = function(grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'assets/js/main.js',
-				'!assets/js/jquery.min.js'
+				'assets/js/main.js'
 			]
 		},
 
