@@ -26,9 +26,6 @@ module.exports = function(grunt) {
 
 		less: {
 			dist: {
-				options: {
-					compress: false
-				},
 				files: {
 					'assets/css/dist/style.min.css': [
 						'assets/css/normalize.css', 'assets/less/style.less'
@@ -37,13 +34,16 @@ module.exports = function(grunt) {
 			}
 		},
 
-		autoprefixer: {
+		pleeease: {
 			dist: {
 				options: {
-					browsers: ['last 2 versions', 'ie 8', 'ie 9'],
-					cascade: false,
+					autoprefixer: { 'browsers': ['last 2 versions', 'ie 9'] },
+					minifier: { preserveHacks: true, removeAllComments: true },
+					mqpacker: true
 				},
-				src: 'assets/css/dist/style.min.css'
+				files: {
+					'assets/css/dist/style.min.css': 'assets/css/dist/style.min.css'
+				}
 			}
 		},
 
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 				files: [
 					'assets/less/*.less'
 				],
-				tasks: ['less', 'autoprefixer']
+				tasks: ['less', 'pleeease']
 			},
 			js: {
 				files: [
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-pleeease');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Register tasks
@@ -87,7 +87,7 @@ module.exports = function(grunt) {
 		'jshint',
 		'uglify',
 		'less',
-		'autoprefixer'
+		'pleeease'
 	]);
 
 };
