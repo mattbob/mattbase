@@ -37,21 +37,21 @@
 	padding: @padding;
 }
 
-.position(@pos: relative, @coordinates: auto, @z: 1) {
+.pos(@pos: relative, @coordinates: auto, @z: 1) {
 	position: @pos;
 	z-index: @z;
 
 	@sides: top, right, bottom, left;
 
-	.position-loop(@index) when (@index > 0) {
+	.pos-loop(@index) when (@index > 0) {
 		@property: extract(@sides, @index);
 		@{property}: extract(@coordinates, @index);
 
-		.position-loop(@index - 1);
+		.pos-loop(@index - 1);
 	}
-	.position-loop(0) {}
+	.pos-loop(0) {}
 
-	.position-loop(length(@coordinates));
+	.pos-loop(length(@coordinates));
 }
 
 
@@ -59,7 +59,7 @@
 // TEXT HELPERS
 ///////////////////////////////////// */
 
-.navigation {
+.navigation() {
 	.spacing(0, 0);
 	list-style:none;
 }
