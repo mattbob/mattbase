@@ -69,3 +69,23 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+
+/* /////////////////////////////////////
+// DESIGN EFFECTS
+///////////////////////////////////// */
+
+.gradient (@top, @bottom, @fallback: @top) {
+	background-color: @fallback;
+	background: linear-gradient(to bottom, @top, @bottom);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@top', endColorstr='@bottom',GradientType=0 );
+}
+
+
+/* /////////////////////////////////////
+// ANIMATION
+///////////////////////////////////// */
+
+.transition(@speed: 0.25s, @transition: all ease) {
+	transition: @transition @speed;
+}
