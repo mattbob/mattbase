@@ -37,6 +37,19 @@
 	padding: @padding;
 }
 
+/**
+ * SETS THE POSITION PROPERTIES
+ * ----------------------------
+ * Set @pos to relative, absolute, fixed, or inherit (default: relative)
+ * Set @coordinates to top right bottom left (default: auto)
+ * Set @z to the z-index (default: 1)
+ *
+ * EXAMPLE
+ * .pos(absolute, 20px 20px 20px auto, 2)
+ *
+ * OUTPUT
+ * position: absolute; top: 20px; right: 20px; bottom: 20px; left: auto; z-index: 2;
+ */
 .pos(@pos: relative, @coordinates: auto, @z: 1) {
 	position: @pos;
 	z-index: @z;
