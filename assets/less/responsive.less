@@ -14,7 +14,7 @@
 // VARIABLES
 ///////////////////////////////////// */
 
-@columns:          12;
+@total-columns:    12;
 @gutter-width:     30px;
 @include-gutters:  false;
 
@@ -60,25 +60,25 @@
 .col(@span, @gutter: @include-gutters, @device: mobile) {
 	float: left;
 	display: block;
-	.border-box;
+	min-height: 1px;
 }
 
 // SET COLUMN WIDTHS & GUTTERS
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile) and (@gutter = true) {
-	width: (100% * @span / @columns);
+	width: percentage(@span / @total-columns);
 	padding-left: @gutter-width / 2;
 	padding-right: @gutter-width / 2;
 }
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile) and (@gutter = false) {
-	width: (100% * @span / @columns);
+	width: percentage(@span / @total-columns);
 	padding-left: 0;
 	padding-right: 0;
 }
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) and (@gutter = true) {
 	@media screen and (min-width: @width-mobile-l) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: @gutter-width / 2;
 		padding-right: @gutter-width / 2;
 	}
@@ -86,7 +86,7 @@
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) and (@gutter = false) {
 	@media screen and (min-width: @width-mobile-l) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -94,7 +94,7 @@
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) and (@gutter = true) {
 	@media screen and (min-width: @width-tablet) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: @gutter-width / 2;
 		padding-right: @gutter-width / 2;
 	}
@@ -102,7 +102,7 @@
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) and (@gutter = false) {
 	@media screen and (min-width: @width-tablet) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -110,7 +110,7 @@
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = desktop) and (@gutter = true) {
 	@media screen and (min-width: @width-desktop) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: @gutter-width / 2;
 		padding-right: @gutter-width / 2;
 	}
@@ -118,7 +118,7 @@
 
 .col(@span, @gutter: @include-gutters, @device: mobile) when (@device = desktop) and (@gutter = false) {
 	@media screen and (min-width: @width-desktop) {
-		width: (100% * @span / @columns);
+		width: percentage(@span / @total-columns);
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -126,25 +126,25 @@
 
 
 // SET OFFSET MARGINS
-.offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile) {
-    margin-left: (100% * @span / @columns);
+.offset(@span, @device: mobile) when (@device = mobile) {
+    margin-left: percentage(@span / @total-columns);
 }
 
-.offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = mobile-l) {
+.offset(@span, @device: mobile) when (@device = mobile-l) {
     @media screen and (min-width: @width-mobile-l) {
-        margin-left: (100% * @span / @columns);
+        margin-left: percentage(@span / @total-columns);
     }
 }
 
-.offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = tablet) {
+.offset(@span, @device: mobile) when (@device = tablet) {
     @media screen and (min-width: @width-tablet) {
-        margin-left: (100% * @span / @columns);
+        margin-left: percentage(@span / @total-columns);
     }
 }
 
-.offset(@span, @gutter: @include-gutters, @device: mobile) when (@device = desktop) {
+.offset(@span, @device: mobile) when (@device = desktop) {
     @media screen and (min-width: @width-desktop) {
-        margin-left: (100% * @span / @columns);
+        margin-left: percentage(@span / @total-columns);
     }
 }
 

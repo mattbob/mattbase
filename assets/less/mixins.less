@@ -38,6 +38,7 @@
 }
 
 /**
+ * ----------------------------
  * SETS THE POSITION PROPERTIES
  * ----------------------------
  * Set @pos to relative, absolute, fixed, or inherit (default: relative)
@@ -72,15 +73,36 @@
 // TEXT HELPERS
 ///////////////////////////////////// */
 
+.font-face(@family-name, @font-path, @font-weight: normal, @font-style: normal) {
+	@font-face {
+		font-family: @family-name;
+		src: url('@{font-path}.eot');
+		src: url('@{font-path}.eot?#iefix') format('embedded-opentype'),
+		     url('@{font-path}.woff') format('woff'),
+		     url('@{font-path}.ttf') format('truetype');
+		font-weight: @font-weight;
+		font-style: @font-style;
+	}
+}
+
 .navigation() {
 	.spacing(0, 0);
 	list-style:none;
 }
 
 .hide-text {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
+	border: 0;
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+	background-color: transparent;
+}
+
+.placeholder(@color) {
+	&::-webkit-input-placeholder { color: @color; }
+	          &:-moz-placeholder { color: @color; }
+	         &::-moz-placeholder { color: @color; }
+	     &:-ms-input-placeholder { color: @color; }
 }
 
 
@@ -88,10 +110,18 @@
 // DESIGN EFFECTS
 ///////////////////////////////////// */
 
-.gradient (@top, @bottom, @fallback: @top) {
-	background-color: @fallback;
-	background: linear-gradient(to bottom, @top, @bottom);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@top', endColorstr='@bottom',GradientType=0 );
+#gradient {
+	.horizontal(@left, @right, @fallback: @left) {
+		background-color: @fallback;
+		background: linear-gradient(to right, @left, @right);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@left', endColorstr='@right', GradientType=1 );
+	}
+
+	.vertical(@top, @bottom, @fallback: @top) {
+		background-color: @fallback;
+		background: linear-gradient(to bottom, @top, @bottom);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@top', endColorstr='@bottom', GradientType=0 );
+	}
 }
 
 

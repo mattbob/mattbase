@@ -1,11 +1,25 @@
 'use strict';
 module.exports = function( grunt ) {
 
+	// CONFIG SETTINGS
 	grunt.initConfig( {
 
 		jshint: {
 			options: {
-				jshintrc: '.jshintrc'
+				bitwise: true,
+				browser: true,
+				curly: true,
+				eqeqeq: true,
+				eqnull: true,
+				esnext: true,
+				immed: true,
+				jquery: true,
+				latedef: true,
+				newcap: true,
+				noarg: true,
+				node: true,
+				strict: false,
+				trailing: true
 			},
 			all: [
 				'Gruntfile.js',
@@ -14,41 +28,34 @@ module.exports = function( grunt ) {
 		},
 
 		uglify: {
-			dist: {
+			prod: {
 				options: {
 					mangle: false,
 					sourceMap: true
 				},
 				files: {
-					'assets/js/dist/main.min.js': [ 'assets/js/main.js' ]
+					'assets/js/main.min.js': [ 'assets/js/main.js' ]
 				}
 			}
 		},
 
 		less: {
-			dist: {
-				files: {
-					'assets/css/dist/style.min.css': [
-						'assets/css/normalize.css', 'assets/less/style.less'
-					]
-				}
-			}
-		},
-
-		pleeease: {
-			dist: {
+			prod: {
 				options: {
-					autoprefixer: {
-						'browsers': [ 'last 2 versions', 'ie 9' ]
-					},
-					minifier: {
-						preserveHacks: true,
-						removeAllComments: true
-					},
-					mqpacker: false
+					compress: true,
+					plugins: [
+						new( require( 'less-plugin-autoprefix' ) )( {
+							browsers: [ "last 2 versions" ]
+						} ),
+					],
+					sourceMap: true,
+					sourceMapFilename: 'assets/css/style.min.css.map',
+					sourceMapURL: 'style.min.css.map'
 				},
 				files: {
-					'assets/css/dist/style.min.css': 'assets/css/dist/style.min.css'
+					'assets/css/style.min.css': [
+						'assets/less/style.less'
+					]
 				}
 			}
 		},
@@ -69,7 +76,7 @@ module.exports = function( grunt ) {
 				files: [
 					'assets/less/*.less'
 				],
-				tasks: [ 'less', 'pleeease' ]
+				tasks: [ 'less' ]
 			},
 			js: {
 				files: [
@@ -81,19 +88,17 @@ module.exports = function( grunt ) {
 
 	} );
 
-	// Load tasks
+	// LOAD TASKS
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-less' );
-	grunt.loadNpmTasks( 'grunt-pleeease' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
-	// Register tasks
+	// REGISTER COMMANDS
 	grunt.registerTask( 'default', [
-		'jshint',
-		'uglify',
-		'less',
-		'pleeease'
+		'newer:jshint',
+		'newer:uglify',
+		'newer:less'
 	] );
 
 };
