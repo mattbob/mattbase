@@ -75,5 +75,6 @@ Set `@device` to all, mobile, tablet, or desktop (default: all).
 
 
 ### Changelog
+- v0.1.6 - Added retina-image mixin; Created new media query variables for easier breakpoints  
 - v0.1.5 - Fix to prevent empty columns from collapsing; Improved Grunt config and added LESS source map; Updated gradient mixin; Added placeholder and font-face mixin  
 - v0.1.4 - Added README.md

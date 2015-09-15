@@ -96,9 +96,9 @@ module.exports = function( grunt ) {
 
 	// REGISTER COMMANDS
 	grunt.registerTask( 'default', [
-		'newer:jshint',
-		'newer:uglify',
-		'newer:less'
+		'jshint',
+		'uglify',
+		'less'
 	] );
 
 };
