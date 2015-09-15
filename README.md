@@ -2,11 +2,11 @@
 
 A simple, friendly, mobile-first [LESS](http://lesscss.org/) framework.
 
-### What it is?
+#### What it is?
 - Mattbase includes a basic Grunt configuration including [jshint](https://github.com/gruntjs/grunt-contrib-jshint), [uglify](https://github.com/gruntjs/grunt-contrib-uglify) (with source map), [less processing](https://github.com/gruntjs/grunt-contrib-less) (with source map), and [watch](https://github.com/gruntjs/grunt-contrib-watch).
 - It includes a mobile-first responsive grid framework, miscellaneous LESS mixins, minimal global styles, and an empty LESS file for custom styles.
 
-### Getting Started/Installation
+#### Getting Started/Installation
 - Make sure you have [grunt-cli](http://gruntjs.com/getting-started) installed: `npm install -g grunt-cli`.
 - Place the Mattbase files within your project folder.
 - In your project folder run: `npm install`.
