@@ -1,6 +1,6 @@
 # Mattbase
 
-A simple, friendly, mobile-first [LESS](http://lesscss.org/) framework.
+A simple, semantic, mobile-first, [LESS](http://lesscss.org/)-based, front end framework.
 
 #### What it is?
 - Mattbase includes a basic Grunt configuration including [jshint](https://github.com/gruntjs/grunt-contrib-jshint), [uglify](https://github.com/gruntjs/grunt-contrib-uglify) (with source map), [less processing](https://github.com/gruntjs/grunt-contrib-less) (with source map), and [watch](https://github.com/gruntjs/grunt-contrib-watch).
